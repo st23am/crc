@@ -3,6 +3,7 @@ defmodule CRCTest do
   doctest CRC
 
   defp test_data, do: "123456789"
+  defp test_data_2, do: "abcdefg"
 
   test "calculate correct CRC-16" do
     assert CRC.crc_16(test_data) == 0xBB3D
@@ -10,6 +11,10 @@ defmodule CRCTest do
 
   test "calculate correct CRC-16 ccitt with default 0xFFFF" do
     assert CRC.ccitt_16(test_data) == 0x29B1
+  end
+
+  test "calculate correct CRC-16 ccitt with default 0xFFFF - test data 2" do
+    assert CRC.ccitt_16(test_data) == 0x8796
   end
 
   test "calculate correct CRC-16 ccitt with 0x1D0F" do
